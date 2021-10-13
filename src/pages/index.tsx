@@ -1,7 +1,7 @@
 import { NextSeo } from 'next-seo';
 import Page from '@/components/page';
 import Header from '@/components/header';
-import VideoSection from '@/components/video-section';
+import HeroSection from '@/components/hero-section';
 import ListSection from '@/components/list-section';
 import FeatureSection from '@/components/feature-section';
 import CasesSection from '@/components/cases-section';
@@ -13,12 +13,12 @@ export default function Home() {
   return (
     <Page>
       <NextSeo
-        title="STARTD - Template"
+        title="Teamshop"
         description="A TypeScript/Next.js theme that includes everything you need to build amazing landing page!"
       />
       <Header />
       <main>
-        <VideoSection />
+        <HeroSection />
         <ListSection />
         <FeatureSection />
         <CasesSection />

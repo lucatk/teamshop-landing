@@ -10,39 +10,43 @@ interface IMenuButton {
 type Link = {
   label: string;
   href: string;
+  button?: boolean;
+  primary?: boolean;
 };
 
 const links = [
+  {
+    label: `Impressionen`,
+    href: `/`,
+  },
+  {
+    label: `Vorteile`,
+    href: `/`,
+  },
   {
     label: `Features`,
     href: `/`,
   },
   {
-    label: `Testimonials`,
-    href: `/`,
-  },
-  {
-    label: `Pricing`,
-    href: `/`,
-  },
-  {
-    label: `Blog`,
+    label: `Preise`,
     href: `/`,
   },
 ];
 
 const secondaryLinks = [
+  // {
+  //   label: `Contact sales`,
+  //   href: `/`,
+  // },
+  // {
+  //   label: `Log in`,
+  //   href: `/`,
+  // },
   {
-    label: `Contact sales`,
+    label: `Kontakt aufnehmen`,
     href: `/`,
-  },
-  {
-    label: `Log in`,
-    href: `/`,
-  },
-  {
-    label: `Get Started`,
-    href: `/`,
+    button: true,
+    primary: true,
   },
 ];
 
@@ -138,9 +142,25 @@ const Navigation = () => {
           </div>
           <div className={tw(`hidden md:block`)}>
             <div className={tw(`ml-4 flex items-center md:ml-6`)}>
-              <Button modifier="border-0 mr-2">Contact sales</Button>
-              <Button modifier="border-0 mr-2">Log in</Button>
-              <Button primary>Get started</Button>
+              {secondaryLinks.map((link: Link) =>
+                link.button ? (
+                  <Button
+                    key={`nav-${link.label}`}
+                    primary={link.primary}
+                    modifier={!link.primary ? `border-0 mr-2` : undefined}
+                  >
+                    {link.label}
+                  </Button>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className={tw(`text-gray-500 hover:text-gray-600 px-3 py-2 rounded-md font-medium`)}
+                  >
+                    {link.label}
+                  </a>
+                ),
+              )}
             </div>
           </div>
           <div className={tw(`-mr-2 flex md:hidden`)}>
